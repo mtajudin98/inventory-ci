@@ -25,17 +25,7 @@
                                 <span class="help-block"></span>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3">Jenis Produk</label>
-                            <div class="col-md-9">
-                                <select name="jenis_produk" class="form-control">
-                                    <option value="">--Select Jenis--</option>
-                                    <option value="makanan">Makanan</option>
-                                    <option value="minuman">Minuman</option>
-                                </select>
-                                <span class="help-block"></span>
-                            </div>
-                        </div>
+                        
                         <div class="form-group">
                             <label class="control-label col-md-3">Harga Produk</label>
                             <div class="col-md-9">

@@ -87,13 +87,27 @@ class Produk extends CI_Controller {
         echo json_encode($data);
     }
  
-    public function ajax_add()
+    public function ajax_add1()
     {
         $this->_validate();
         $data = array(
                 'kode_produk' => $this->input->post('kode_produk'),
                 'nama_produk' => $this->input->post('nama_produk'),
-                'jenis_produk' => $this->input->post('jenis_produk'),
+                'jenis_produk' => 'makanan',
+                'harga_produk' => $this->input->post('harga_produk'),
+                'stock' => $this->input->post('stock'),
+                'user_id' => $this->input->post('user_id'),
+            );
+        $insert = $this->produk->save($data);
+        echo json_encode(array("status" => TRUE));
+    }
+    public function ajax_add2()
+    {
+        $this->_validate();
+        $data = array(
+                'kode_produk' => $this->input->post('kode_produk'),
+                'nama_produk' => $this->input->post('nama_produk'),
+                'jenis_produk' => 'minuman',
                 'harga_produk' => $this->input->post('harga_produk'),
                 'stock' => $this->input->post('stock'),
                 'user_id' => $this->input->post('user_id'),
@@ -108,7 +122,6 @@ class Produk extends CI_Controller {
         $data = array(
             'kode_produk' => $this->input->post('kode_produk'),
             'nama_produk' => $this->input->post('nama_produk'),
-            'jenis_produk' => $this->input->post('jenis_produk'),
             'harga_produk' => $this->input->post('harga_produk'),
             'stock' => $this->input->post('stock'),
             'user_id' => $this->input->post('user_id'),
@@ -149,13 +162,6 @@ class Produk extends CI_Controller {
         {
             $data['inputerror'][] = 'harga_produk';
             $data['error_string'][] = 'Harga Produk Harus Diisi';
-            $data['status'] = FALSE;
-        }
- 
-        if($this->input->post('jenis_produk') == '')
-        {
-            $data['inputerror'][] = 'jenis_produk';
-            $data['error_string'][] = 'Pilih Jenis Produk';
             $data['status'] = FALSE;
         }
  

@@ -164,7 +164,7 @@ function save()
     var url;
  
     if(save_method == 'add') {
-        url = "<?php echo site_url('produk/ajax_add')?>";
+        url = "<?php echo site_url('produk/ajax_add1')?>";
     } else {
         url = "<?php echo site_url('produk/ajax_update')?>";
     }
@@ -232,4 +232,4 @@ function delete_produk(id)
  
 </script>
  
-<?php $this->load->view('admin/produk/modal');?>
+<?php $this->load->view('admin/produk/modal-makanan');?>

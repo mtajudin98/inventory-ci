@@ -138,7 +138,6 @@ function edit_produk(id)
             $('[name="id"]').val(data.id);
             $('[name="kode_produk"]').val(data.kode_produk);
             $('[name="nama_produk"]').val(data.nama_produk);
-            $('[name="jenis_produk"]').val(data.jenis_produk);
             $('[name="harga_produk"]').val(data.harga_produk);
             $('[name="stock"]').val(data.stock);
             $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
@@ -164,7 +163,7 @@ function save()
     var url;
  
     if(save_method == 'add') {
-        url = "<?php echo site_url('produk/ajax_add')?>";
+        url = "<?php echo site_url('produk/ajax_add2')?>";
     } else {
         url = "<?php echo site_url('produk/ajax_update')?>";
     }
@@ -232,4 +231,4 @@ function delete_produk(id)
  
 </script>
  
-<?php $this->load->view('admin/produk/modal');?>
+<?php $this->load->view('admin/produk/modal-minuman');?>
