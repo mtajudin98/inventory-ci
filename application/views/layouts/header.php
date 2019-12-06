@@ -125,15 +125,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link active">
+                <a href="<?php echo base_url('produk/list-makanan');?>" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>List Produk</p>
+                  <p>List Makanan</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="<?php echo base_url('produk/list-minuman');?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>List Order</p>
+                  <p>List Minuman</p>
                 </a>
               </li>
             </ul>
@@ -142,7 +142,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
-                Produk
+                Transaksi
                 <span class="right badge badge-danger">New</span>
               </p>
             </a>
