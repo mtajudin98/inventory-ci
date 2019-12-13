@@ -20,18 +20,19 @@
 
     <!-- Main content -->
     <section class="content">
-      <div class="container-fluid">
-        <div class="card card-default">
+      <div class="row">
+        <div class="col-12">
+        <div class="card">
           <div class="card-header">
             <h3 class="card-title">Produk</h3>
+            <div class="card-tools"><button class="btn btn-success" onclick="add_produk()"><i class="glyphicon glyphicon-plus"></i> Add produk</button> / 
+            <button class="btn btn-default" onclick="reload_table()"><i class="glyphicon glyphicon-refresh"></i> Reload</button></div>
           </div>
+        
           <!-- /.card-header -->
           <div class="card-body">
-            <div class="row">
-              <div class="col-md-6">
-            <button class="btn btn-success" onclick="add_produk()"><i class="glyphicon glyphicon-plus"></i> Add produk</button> / 
-            <button class="btn btn-default" onclick="reload_table()"><i class="glyphicon glyphicon-refresh"></i> Reload</button>
-
+            
+            
               <table id="table" class="table table-bordered table-striped">
                 <thead>
                 <tr>
@@ -59,6 +60,7 @@
                 </tfoot>
               </table>
               </div>
+            </div>
             </div>
         </div>
         </div>
