@@ -12,6 +12,13 @@
                     <input type="hidden" value="1" name="user_id"/> 
                     <div class="form-body">
                         <div class="form-group">
+                            <label class="control-label col-md-3">Kode Produk</label>
+                            <div class="col-md-9">
+                                <input name="kode_produk" placeholder="Kode Produk" class="form-control" type="text">
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label class="control-label col-md-3">Nama Produk</label>
                             <div class="col-md-9">
                                 <input name="nama_produk" placeholder="Nama Produk" class="form-control" type="text">

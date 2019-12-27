@@ -3,7 +3,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h3 class="modal-title">Produk Form</h3>
+                <h3 class="modal-title">Supplier Form</h3>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
             <div class="modal-body form">
@@ -12,24 +12,17 @@
                     <input type="hidden" value="1" name="user_id"/> 
                     <div class="form-body">
                         <div class="form-group">
-                            <label class="control-label col-md-3">Nama Produk</label>
+                            <label class="control-label col-md-3">Nama Supplier</label>
                             <div class="col-md-9">
-                                <input name="nama_produk" placeholder="Nama Produk" class="form-control" type="text">
+                                <input name="nama_supplier" placeholder="Nama Supplier" class="form-control" type="text">
                                 <span class="help-block"></span>
                             </div>
                         </div>
                         
                         <div class="form-group">
-                            <label class="control-label col-md-3">Harga Produk</label>
+                            <label class="control-label col-md-3">Alamat</label>
                             <div class="col-md-9">
-                            <input name="harga_produk" placeholder="Harga Produk" class="form-control" type="text">
-                                <span class="help-block"></span>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3">Stock Produk</label>
-                            <div class="col-md-9">
-                            <input name="stock" placeholder="Stock Produk" class="form-control" type="text">
+                            <textarea name="alamat" placeholder="Alamat Supplier" class="form-control"> </textarea>
                                 <span class="help-block"></span>
                             </div>
                         </div>

@@ -83,7 +83,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <img src="<?php echo base_url();?>assets/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Mimin D</a>
+          <a href="<?php echo base_url('user');?>" class="d-block">Mimin D</a>
         </div>
       </div>
 
@@ -92,17 +92,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-               Dashboard
-              </p>
-            </a>
-          </li>
            <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <i class="nav-icon fas fa-box"></i>
               <p>
                Produk
                 <i class="right fas fa-angle-left"></i>
@@ -124,8 +116,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </ul>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+            <a href="<?php echo base_url('supplier');?>" class="nav-link">
+              <i class="nav-icon fas fa-address-card"></i>
               <p>
                Suplier
                 <i class="right fas fa-angle-left"></i>
@@ -133,8 +125,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+            <a href="<?php echo base_url('purchase');?>" class="nav-link">
+              <i class="nav-icon fas fa-cart-arrow-down"></i>
               <p>
                Purchase
                 <i class="right fas fa-angle-left"></i>

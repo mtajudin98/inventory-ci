@@ -36,7 +36,7 @@
                 <thead>
                 <tr>
                 
-                  <th>Kode Produk</th>
+                  <th>ID Produk</th>
                   <th>Nama Produk</th>
                   <th>Harga</th>
                   <th>Stock</th>
@@ -48,7 +48,7 @@
                 <tfoot>
                 <tr>
                 
-                  <th>Kode Produk</th>
+                  <th>ID Produk</th>
                   <th>Nama Produk</th>
                   <th>Harga</th>
                   <th>Stock</th>
@@ -135,7 +135,6 @@ function edit_produk(id)
         {
  
             $('[name="id"]').val(data.id);
-            $('[name="kode_produk"]').val(data.kode_produk);
             $('[name="nama_produk"]').val(data.nama_produk);
             $('[name="harga_produk"]').val(data.harga_produk);
             $('[name="stock"]').val(data.stock);

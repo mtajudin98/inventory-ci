@@ -34,7 +34,7 @@ class Produk extends CI_Controller {
         foreach ($list as $produk) {
             $no++;
             $row = array();
-            $row[] = $produk->kode_produk;
+            $row[] = $produk->id;
             $row[] = $produk->nama_produk;
             $row[] = $produk->jenis_produk;
             $row[] = $produk->harga_produk;
@@ -62,14 +62,14 @@ class Produk extends CI_Controller {
         foreach ($list as $produk) {
             $no++;
             $row = array();
-            $row[] = $produk->kode_produk;
+            $row[] = $produk->id;
             $row[] = $produk->nama_produk;
             $row[] = $produk->harga_produk;
             $row[] = $produk->stock;
  
             //add html for action
-            $row[] = '<a class="btn btn-sm btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_produk('."'".$produk->id."'".')"><i class="glyphicon glyphicon-pencil"></i> Edit</a>
-                  <a class="btn btn-sm btn-danger" href="javascript:void(0)" title="Hapus" onclick="delete_produk('."'".$produk->id."'".')"><i class="glyphicon glyphicon-trash"></i> Delete</a>';
+            $row[] = '<a class="btn btn-sm btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_produk('."'".$produk->id."'".')"><i class="fas fa-edit"></i></a>
+                  <a class="btn btn-sm btn-danger" href="javascript:void(0)" title="Hapus" onclick="delete_produk('."'".$produk->id."'".')"><i class="fas fa-trash"></i></a>';
          
             $data[] = $row;
         }
@@ -93,14 +93,14 @@ class Produk extends CI_Controller {
             $no++;
             $row = array();
    
-            $row[] = $produk->kode_produk;
+            $row[] = $produk->id;
             $row[] = $produk->nama_produk;
             $row[] = $produk->harga_produk;
             $row[] = $produk->stock;
  
             //add html for action
-            $row[] = '<a class="btn btn-sm btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_produk('."'".$produk->id."'".')"><i class="glyphicon glyphicon-pencil"></i> Edit</a>
-                  <a class="btn btn-sm btn-danger" href="javascript:void(0)" title="Hapus" onclick="delete_produk('."'".$produk->id."'".')"><i class="glyphicon glyphicon-trash"></i> Delete</a>';
+            $row[] = '<a class="btn btn-sm btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_produk('."'".$produk->id."'".')"><i class="fas fa-edit"></i></a>
+                  <a class="btn btn-sm btn-danger" href="javascript:void(0)" title="Hapus" onclick="delete_produk('."'".$produk->id."'".')"><i class="fas fa-trash"></i></a>';
          
             $data[] = $row;
         }
@@ -125,7 +125,7 @@ class Produk extends CI_Controller {
     {
         $this->_validate();
         $data = array(
-                'kode_produk' => $this->input->post('kode_produk'),
+
                 'nama_produk' => $this->input->post('nama_produk'),
                 'jenis_produk' => 'makanan',
                 'harga_produk' => $this->input->post('harga_produk'),
@@ -139,7 +139,6 @@ class Produk extends CI_Controller {
     {
         $this->_validate();
         $data = array(
-                'kode_produk' => $this->input->post('kode_produk'),
                 'nama_produk' => $this->input->post('nama_produk'),
                 'jenis_produk' => 'minuman',
                 'harga_produk' => $this->input->post('harga_produk'),
@@ -154,7 +153,6 @@ class Produk extends CI_Controller {
     {
         $this->_validate();
         $data = array(
-            'kode_produk' => $this->input->post('kode_produk'),
             'nama_produk' => $this->input->post('nama_produk'),
             'harga_produk' => $this->input->post('harga_produk'),
             'stock' => $this->input->post('stock'),
@@ -178,12 +176,6 @@ class Produk extends CI_Controller {
         $data['inputerror'] = array();
         $data['status'] = TRUE;
  
-        if($this->input->post('kode_produk') == '')
-        {
-            $data['inputerror'][] = 'kode_produk';
-            $data['error_string'][] = 'Kode Produk Harus Diisi';
-            $data['status'] = FALSE;
-        }
  
         if($this->input->post('nama_produk') == '')
         {

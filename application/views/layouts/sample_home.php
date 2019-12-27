@@ -9,7 +9,6 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
               <li class="breadcrumb-item active">Dashboard</li>
             </ol>
           </div><!-- /.col -->
@@ -27,9 +26,9 @@
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3><?php echo $c1;?></h3>
+                <h3>Produk</h3>
 
-                <p>Produk</p>
+                <p>List</p>
               </div>
               <div class="icon">
                 <i class="fas fa-box"></i>
@@ -42,9 +41,9 @@
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3>53<sup style="font-size: 20px">%</sup></h3>
+                <h3>Purchased</h3>
 
-                <p>Purchased</p>
+                <p>List</p>
               </div>
               <div class="icon">
                 <i class="fas fa-cart-arrow-down"></i>
@@ -57,9 +56,9 @@
             <!-- small box -->
             <div class="small-box bg-warning">
               <div class="inner">
-                <h3>44</h3>
+                <h3>Supplier</h3>
 
-                <p>Supplier</p>
+                <p>List</p>
               </div>
               <div class="icon">
                 <i class="fas fa-address-card"></i>

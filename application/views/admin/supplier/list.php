@@ -6,12 +6,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Produk Makanan</h1>
+            <h1>Supplier</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="<?php echo base_url();?>admin">Home</a></li>
-              <li class="breadcrumb-item active">Produk Makanan</li>
+              <li class="breadcrumb-item active">Supplier</li>
             </ol>
           </div>
         </div>
@@ -24,8 +24,8 @@
         <div class="col-12">
         <div class="card">
           <div class="card-header">
-            <h3 class="card-title">List Makanan</h3>
-            <div class="card-tools"><button class="btn btn-success" onclick="add_produk()"><i class="glyphicon glyphicon-plus"></i> Add produk</button></div>
+            <h3 class="card-title">List Supplier</h3>
+            <div class="card-tools"><button class="btn btn-success" onclick="add_supplier()"><i class="fas fa-plus"></i> Add Supplier</button></div>
           </div>
         
           <!-- /.card-header -->
@@ -36,10 +36,9 @@
                 <thead>
                 <tr>
             
-                  <th>ID Produk</th>
-                  <th>Nama Produk</th>
-                  <th>Harga</th>
-                  <th>Stock</th>
+                  <th>ID Supplier</th>
+                  <th>Nama Supplier</th>
+                  <th>Alamat</th>
                   <th>Actions</th>
                 </tr>
                 </thead>
@@ -48,10 +47,9 @@
                 <tfoot>
                 <tr>
                 
-                  <th>ID Produk</th>
-                  <th>Nama Produk</th>
-                  <th>Harga</th>
-                  <th>Stock</th>
+                <th>ID Supplier</th>
+                  <th>Nama Supplier</th>
+                  <th>Alamat</th>
                   <th>Actions</th>
                 </tr>
                 </tfoot>
@@ -81,7 +79,7 @@ $(document).ready(function() {
  
         // Load data for the table's content from an Ajax source
         "ajax": {
-            "url": "<?php echo site_url('produk/get_list1')?>",
+            "url": "<?php echo site_url('supplier/get_list')?>",
             "type": "POST"
         },
  
@@ -109,17 +107,17 @@ $(document).ready(function() {
  
  
  
-function add_produk()
+function add_supplier()
 {
     save_method = 'add';
     $('#form')[0].reset(); // reset form on modals
     $('.form-group').removeClass('has-error'); // clear error class
     $('.help-block').empty(); // clear error string
     $('#modal_form').modal('show'); // show bootstrap modal
-    $('.modal-title').text('Add produk'); // Set Title to Bootstrap modal title
+    $('.modal-title').text('Add Supplier'); // Set Title to Bootstrap modal title
 }
  
-function edit_produk(id)
+function edit_supplier(id)
 {
     save_method = 'update';
     $('#form')[0].reset(); // reset form on modals
@@ -128,17 +126,15 @@ function edit_produk(id)
  
     //Ajax Load data from ajax
     $.ajax({
-        url : "<?php echo site_url('produk/ajax_edit/')?>/" + id,
+        url : "<?php echo site_url('supplier/ajax_edit/')?>/" + id,
         type: "GET",
         dataType: "JSON",
         success: function(data)
         {
  
             $('[name="id"]').val(data.id);
-            $('[name="nama_produk"]').val(data.nama_produk);
-            $('[name="jenis_produk"]').val(data.jenis_produk);
-            $('[name="harga_produk"]').val(data.harga_produk);
-            $('[name="stock"]').val(data.stock);
+            $('[name="nama_supplier"]').val(data.nama_supplier);
+            $('[name="alamat"]').val(data.alamat);
             $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
             $('.modal-title').text('Edit produk'); // Set title to Bootstrap modal title
  
@@ -162,9 +158,9 @@ function save()
     var url;
  
     if(save_method == 'add') {
-        url = "<?php echo site_url('produk/ajax_add1')?>";
+        url = "<?php echo site_url('supplier/ajax_add')?>";
     } else {
-        url = "<?php echo site_url('produk/ajax_update')?>";
+        url = "<?php echo site_url('supplier/ajax_update')?>";
     }
  
     // ajax adding data to database
@@ -204,13 +200,13 @@ function save()
     });
 }
  
-function delete_produk(id)
+function delete_supplier(id)
 {
     if(confirm('Are you sure delete this data?'))
     {
         // ajax delete data to database
         $.ajax({
-            url : "<?php echo site_url('produk/ajax_delete')?>/"+id,
+            url : "<?php echo site_url('supplier/ajax_delete')?>/"+id,
             type: "POST",
             dataType: "JSON",
             success: function(data)
@@ -230,4 +226,4 @@ function delete_produk(id)
  
 </script>
  
-<?php $this->load->view('admin/produk/modal-makanan');?>
+<?php $this->load->view('admin/supplier/add');?>

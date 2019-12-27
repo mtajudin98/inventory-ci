@@ -1,11 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
  
-class Produk_model extends CI_Model {
+class Purchase_model extends CI_Model {
  
-    var $table = 't_produk';
-    var $column_order = array('id','nama_produk','harga_produk','stock',null); //set column field database for datatable orderable
-    var $column_search = array('id','nama_produk','harga_produk','stock'); //set column field database for datatable searchable just firstname , lastname , address are searchable
+    var $table = 't_purchase';
+    var $column_order = array('id','produk_id','supplier_id','qty','tanggal_purchase',null); //set column field database for datatable orderable
+    var $column_search = array('id','supplier_id','produk_id','qty','tanggal_purchase'); //set column field database for datatable searchable just firstname , lastname , address are searchable
     var $order = array('id' => 'asc'); // default order 
  
     public function __construct()
@@ -51,7 +51,7 @@ class Produk_model extends CI_Model {
             $this->db->order_by(key($order), $order[key($order)]);
         }
     }
-    function get_data_all()
+    function get_all()
     {
         $this->_get_datatables_query();
         if($_POST['length'] != -1)
@@ -60,26 +60,6 @@ class Produk_model extends CI_Model {
         $query = $this->db->get();
         return $query->result();
     }
- 
-    function get_datatables1()
-    {
-        $this->_get_datatables_query();
-        if($_POST['length'] != -1)
-        $this->db->limit($_POST['length'], $_POST['start']);
-        $this->db->where('jenis_produk','makanan');
-        $query = $this->db->get();
-        return $query->result();
-    }
-    function get_datatables2()
-    {
-        $this->_get_datatables_query();
-        if($_POST['length'] != -1)
-        $this->db->limit($_POST['length'], $_POST['start']);
-        $this->db->where('jenis_produk','minuman');
-        $query = $this->db->get();
-        return $query->result();
-    }
- 
     function count_filtered()
     {
         $this->_get_datatables_query();
