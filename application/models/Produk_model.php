@@ -51,6 +51,15 @@ class Produk_model extends CI_Model {
             $this->db->order_by(key($order), $order[key($order)]);
         }
     }
+    function get_data_all()
+    {
+        $this->_get_datatables_query();
+        if($_POST['length'] != -1)
+        $this->db->limit($_POST['length'], $_POST['start']);
+        $this->db->order_by('id','DESC');
+        $query = $this->db->get();
+        return $query->result();
+    }
  
     function get_datatables1()
     {
@@ -110,6 +119,6 @@ class Produk_model extends CI_Model {
         $this->db->where('id', $id);
         $this->db->delete($this->table);
     }
- 
+    
   
 }

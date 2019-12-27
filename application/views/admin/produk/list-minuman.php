@@ -6,12 +6,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Produk Form</h1>
+            <h1>Produk Minuman</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="<?php echo base_url();?>admin">Home</a></li>
-              <li class="breadcrumb-item active">Produk Form</li>
+              <li class="breadcrumb-item active">Produk Minuman</li>
             </ol>
           </div>
         </div>
@@ -24,9 +24,8 @@
         <div class="col-12">
         <div class="card">
           <div class="card-header">
-            <h3 class="card-title">Produk</h3>
-            <div class="card-tools"><button class="btn btn-success" onclick="add_produk()"><i class="glyphicon glyphicon-plus"></i> Add produk</button> / 
-            <button class="btn btn-default" onclick="reload_table()"><i class="glyphicon glyphicon-refresh"></i> Reload</button></div>
+            <h3 class="card-title">List Minuman</h3>
+            <div class="card-tools"><button class="btn btn-success" onclick="add_produk()"><i class="glyphicon glyphicon-plus"></i> Add produk</button></div>
           </div>
         
           <!-- /.card-header -->
@@ -36,10 +35,9 @@
               <table id="table" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                <th>ID</th>
+                
                   <th>Kode Produk</th>
                   <th>Nama Produk</th>
-                  <th>Jenis</th>
                   <th>Harga</th>
                   <th>Stock</th>
                   <th>Actions</th>
@@ -49,10 +47,9 @@
                 </tbody>
                 <tfoot>
                 <tr>
-                <th>ID</th>
+                
                   <th>Kode Produk</th>
                   <th>Nama Produk</th>
-                  <th>Jenis</th>
                   <th>Harga</th>
                   <th>Stock</th>
                   <th>Actions</th>

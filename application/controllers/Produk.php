@@ -12,6 +12,11 @@ class Produk extends CI_Controller {
         }
 
     }
+
+    public function index()
+    {
+        $this->load->view('admin/produk/list-all');
+    }
  
     public function list_makanan()
     {
@@ -21,7 +26,34 @@ class Produk extends CI_Controller {
     {
         $this->load->view('admin/produk/list-minuman');
     }
+    public function get_all_list()
+    {
+        $list = $this->produk->get_data_all();
+        $data = array();
+        $no = $_POST['start'];
+        foreach ($list as $produk) {
+            $no++;
+            $row = array();
+            $row[] = $produk->kode_produk;
+            $row[] = $produk->nama_produk;
+            $row[] = $produk->jenis_produk;
+            $row[] = $produk->harga_produk;
+            $row[] = $produk->stock;
  
+            
+            $data[] = $row;
+        }
+ 
+        $output = array(
+                        "draw" => $_POST['draw'],
+                        "recordsTotal" => $this->produk->count_all(),
+                        "recordsFiltered" => $this->produk->count_filtered(),
+                        "data" => $data,
+                );
+        //output to json format
+        echo json_encode($output);
+    }
+
     public function get_list1()
     {
         $list = $this->produk->get_datatables1();
@@ -30,10 +62,8 @@ class Produk extends CI_Controller {
         foreach ($list as $produk) {
             $no++;
             $row = array();
-            $row[] = $produk->id;
             $row[] = $produk->kode_produk;
             $row[] = $produk->nama_produk;
-            $row[] = $produk->jenis_produk;
             $row[] = $produk->harga_produk;
             $row[] = $produk->stock;
  
@@ -55,16 +85,16 @@ class Produk extends CI_Controller {
     }
     public function get_list2()
     {
+        
         $list = $this->produk->get_datatables2();
         $data = array();
         $no = $_POST['start'];
         foreach ($list as $produk) {
             $no++;
             $row = array();
-            $row[] = $produk->id;
+   
             $row[] = $produk->kode_produk;
             $row[] = $produk->nama_produk;
-            $row[] = $produk->jenis_produk;
             $row[] = $produk->harga_produk;
             $row[] = $produk->stock;
  
