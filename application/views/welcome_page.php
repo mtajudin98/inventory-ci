@@ -29,9 +29,9 @@
     <div class="card-body login-card-body">
       <p class="login-box-msg">Sign in to start your session</p>
 
-      <form action="" method="post">
+      <form id="logForm">
         <div class="input-group mb-3">
-          <input type="email" class="form-control" placeholder="Email">
+          <input type="text" class="form-control" placeholder="Email" name="username">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
@@ -39,7 +39,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Password">
+          <input type="password" class="form-control" placeholder="Password" name="password">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
@@ -62,7 +62,10 @@
           <!-- /.col -->
         </div>
       </form>
-
+      <div id="responseDiv" class="alert text-center" style="margin-top:20px; display:none;">
+				<button type="button" class="close" id="clearMsg"><span aria-hidden="true">&times;</span></button>
+				<span id="message"></span>
+			</div>	
      
     </div>
     <!-- /.login-card-body -->
@@ -76,6 +79,43 @@
 <script src="<?php echo base_url();?>assets/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="<?php echo base_url();?>assets/js/adminlte.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#logText').html('Login');
+		$('#logForm').submit(function(e){
+			e.preventDefault();
+			$('#logText').html('Checking...');
+			var url = '<?php echo base_url(); ?>';
+			var user = $('#logForm').serialize();
+			var login = function(){
+				$.ajax({
+					type: 'POST',
+					url: url + 'index.php/login/act_login',
+					dataType: 'json',
+					data: user,
+					success:function(response){
+						$('#message').html(response.message);
+						$('#logText').html('Login');
+						if(response.error){
+							$('#responseDiv').removeClass('alert-success').addClass('alert-danger').show();
+						}
+						else{
+							$('#responseDiv').removeClass('alert-danger').addClass('alert-success').show();
+							$('#logForm')[0].reset();
+							setTimeout(function(){
+								location.reload();
+							}, 3000);
+						}
+					}
+				});
+			};
+			setTimeout(login, 3000);
+		});
 
+		$(document).on('click', '#clearMsg', function(){
+			$('#responseDiv').hide();
+		});
+	});
+</script>
 </body>
 </html>

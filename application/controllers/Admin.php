@@ -8,4 +8,11 @@ class Admin extends CI_Controller {
 	{
 		$this->load->view('admin/home');
 	}
+
+	public function logout(){
+		//load session library
+		$this->load->library('session');
+		$this->session->unset_userdata('user');
+		redirect('/');
+	}
 }

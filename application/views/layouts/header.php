@@ -80,7 +80,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <i class="fas fa-users mr-2"></i>Change Profile
           </a>
           <div class="dropdown-divider"></div>
-          <a href="<?php echo site_url();?>" class="dropdown-item">
+          <a href="<?php echo base_url(); ?>/admin/logout" class="dropdown-item">
             <i class="fas fa-users mr-2"></i>Logout
           </a>
         </div>
