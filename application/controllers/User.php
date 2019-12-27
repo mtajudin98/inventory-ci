@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Login extends CI_Controller {
+class User extends CI_Controller {
 
 	function __construct(){
 		parent::__construct();
@@ -11,11 +11,10 @@ class Login extends CI_Controller {
 
 	public function index(){
 		//load session library
-		$this->load->library('session');
-
+		
 		//restrict users to go back to login if session has been set
 		if($this->session->userdata('user')){
-			redirect('admin');
+			redirect('user/home');
 		}
 		else{
 			$this->load->view('welcome_page');
@@ -24,8 +23,7 @@ class Login extends CI_Controller {
 
 	public function act_login(){
 		//load session library
-		$this->load->library('session');
-
+		
 		$output = array('error' => false);
 
 		$username = $_POST['username'];
@@ -47,11 +45,10 @@ class Login extends CI_Controller {
 
 	public function home(){
 		//load session library
-		$this->load->library('session');
-
+		
 		//restrict users to go to home if not logged in
 		if($this->session->userdata('user')){
-			$this->load->view('home');
+			$this->load->view('admin/home');
 		}
 		else{
 			redirect('/');
@@ -61,7 +58,7 @@ class Login extends CI_Controller {
 
 	public function logout(){
 		//load session library
-		$this->load->library('session');
+	
 		$this->session->unset_userdata('user');
 		redirect('/');
 	}

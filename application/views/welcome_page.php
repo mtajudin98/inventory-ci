@@ -90,7 +90,7 @@
 			var login = function(){
 				$.ajax({
 					type: 'POST',
-					url: url + 'index.php/login/act_login',
+					url: url + 'index.php/user/act_login',
 					dataType: 'json',
 					data: user,
 					success:function(response){

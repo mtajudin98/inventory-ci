@@ -7,6 +7,10 @@ class Produk extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('produk_model','produk');
+        if(!$this->session->userdata('user')){
+            redirect('/');
+        }
+
     }
  
     public function list_makanan()
