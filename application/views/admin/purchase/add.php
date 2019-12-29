@@ -28,7 +28,7 @@
         
           <!-- /.card-header -->
           <div class="card-body">
-          <form action="<?php echo base_url('purchase/add');?>" id="form" class="form-horizontal">
+          <form action="<?php echo base_url('purchase/add');?>" id="form" class="form-horizontal" method="POST">
                     <input type="hidden" value="" name="id"/> 
                     <input type="hidden" value="1" name="user_id"/> 
                     <div class="form-body">
@@ -42,6 +42,7 @@
                                 <option value="<?php echo $pro->id;?>"><?php echo $pro->nama_produk;?></option>
                                 <?php endforeach;?>
                                 </select>
+                                <?php echo form_error('nama_produk'); ?>
                                 <span class="help-block"></span>
                             </div>
                         </div>
@@ -55,6 +56,7 @@
                                 <option value="<?php echo $sup->id;?>"><?php echo $sup->nama_supplier;?></option>
                                 <?php endforeach;?>
                                 </select>
+                                <?php echo form_error('nama_supplier'); ?>
                                 <span class="help-block"></span>
                             </div>
                         </div>
@@ -62,6 +64,7 @@
                             <label class="control-label col-md-3">QTY Produk</label>
                             <div class="col-md-9">
                             <input name="qty" placeholder="QTY Produk" class="form-control" type="text">
+                            <?php echo form_error('qty'); ?>
                                 <span class="help-block"></span>
                             </div>
                         </div>

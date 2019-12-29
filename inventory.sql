@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 27, 2019 at 01:57 PM
+-- Generation Time: Dec 29, 2019 at 11:40 AM
 -- Server version: 10.4.10-MariaDB
 -- PHP Version: 7.3.12
 
@@ -33,7 +33,7 @@ CREATE TABLE `t_produk` (
   `nama_produk` varchar(255) NOT NULL,
   `jenis_produk` enum('makanan','minuman','','') NOT NULL,
   `harga_produk` int(11) NOT NULL,
-  `stock` int(3) NOT NULL,
+  `qty` int(3) NOT NULL,
   `user_id` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -41,12 +41,11 @@ CREATE TABLE `t_produk` (
 -- Dumping data for table `t_produk`
 --
 
-INSERT INTO `t_produk` (`id`, `nama_produk`, `jenis_produk`, `harga_produk`, `stock`, `user_id`) VALUES
-(1, 'Jus Jeruk', 'minuman', 10000, 5, 1),
-(2, 'Snack Opesw', 'makanan', 1000, 1, 1),
-(3, 'Mie Kremes', 'makanan', 1500, 2, 1),
-(4, 'Jus Anggur', 'minuman', 2000, 5, 1),
-(5, 'asdasd', 'makanan', 3434, 1, 1);
+INSERT INTO `t_produk` (`id`, `nama_produk`, `jenis_produk`, `harga_produk`, `qty`, `user_id`) VALUES
+(1, 'Mie Ayam', 'makanan', 10000, 0, 1),
+(2, 'Mie Jamur', 'makanan', 15000, 0, 1),
+(3, 'Jus Apel', 'minuman', 20000, 0, 1),
+(4, 'Jus Jeruk', 'minuman', 5000, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -59,16 +58,20 @@ CREATE TABLE `t_purchase` (
   `supplier_id` int(2) NOT NULL,
   `produk_id` int(3) NOT NULL,
   `qty` int(11) NOT NULL,
-  `tanggal_purchase` timestamp NOT NULL DEFAULT current_timestamp()
+  `tanggal_purchase` timestamp NOT NULL DEFAULT current_timestamp(),
+  `user_id` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `t_purchase`
+-- Triggers `t_purchase`
 --
-
-INSERT INTO `t_purchase` (`id`, `supplier_id`, `produk_id`, `qty`, `tanggal_purchase`) VALUES
-(1, 1, 2, 50, '2019-12-20 00:26:32'),
-(2, 2, 1, 20, '2019-12-20 00:26:32');
+DELIMITER $$
+CREATE TRIGGER `update_stock` AFTER INSERT ON `t_purchase` FOR EACH ROW BEGIN
+update t_produk set qty = qty+NEW.qty
+WHERE id = NEW.produk_id;
+END
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -148,13 +151,13 @@ ALTER TABLE `t_user`
 -- AUTO_INCREMENT for table `t_produk`
 --
 ALTER TABLE `t_produk`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `t_purchase`
 --
 ALTER TABLE `t_purchase`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `t_supplier`

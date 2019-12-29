@@ -38,15 +38,15 @@
             
                   <th>ID</th>
                   <th>Nama Produk</th>
-                  <th>Nama Supplier/th>
+                  <th>Nama Supplier</th>
                   <th>QTY</th>
                   <th>Tanggal Purchase</th>
-                  <th>Actions</th>
+                  
                 </tr>
                 </thead>
                 <tbody>
                 <?php
-                $no = $this->uri->segment('3') + 1; 
+                
                 foreach($list as $rows):
 
                 ?>
@@ -69,12 +69,11 @@
                   <th>Supplier ID</th>
                   <th>QTY</th>
                   <th>Tanggal Purchase</th>
-                  <th>Actions</th>
+                 
                 </tr>
                 </tfoot>
               </table>
-              <?php 
-                  echo $this->pagination->create_links();?>
+              <?php echo $pagination; ?>
               </div>
             </div>
             </div>
