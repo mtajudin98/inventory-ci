@@ -39,7 +39,7 @@
                   <th>ID Produk</th>
                   <th>Nama Produk</th>
                   <th>Harga</th>
-                  <th>Stock</th>
+                  <th>QTY</th>
                   <th>Actions</th>
                 </tr>
                 </thead>
@@ -51,7 +51,7 @@
                   <th>ID Produk</th>
                   <th>Nama Produk</th>
                   <th>Harga</th>
-                  <th>Stock</th>
+                  <th>QTY</th>
                   <th>Actions</th>
                 </tr>
                 </tfoot>
@@ -138,7 +138,7 @@ function edit_produk(id)
             $('[name="nama_produk"]').val(data.nama_produk);
             $('[name="jenis_produk"]').val(data.jenis_produk);
             $('[name="harga_produk"]').val(data.harga_produk);
-            $('[name="stock"]').val(data.stock);
+            $('[name="qty"]').val(data.qty);
             $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
             $('.modal-title').text('Edit produk'); // Set title to Bootstrap modal title
  

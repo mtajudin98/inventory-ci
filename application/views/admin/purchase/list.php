@@ -25,7 +25,7 @@
         <div class="card">
           <div class="card-header">
             <h3 class="card-title">Purchase List</h3>
-            
+            <div class="card-tools"><a href="<?php echo base_url('purchase/add');?>" class="btn btn-success"><i class="fas fa-plus"></i> Add Purchase</a></div>
           </div>
         
           <!-- /.card-header -->
@@ -37,15 +37,30 @@
                 <tr>
             
                   <th>ID</th>
-                  <th>Produk ID</th>
-                  <th>Supplier ID</th>
+                  <th>Nama Produk</th>
+                  <th>Nama Supplier/th>
                   <th>QTY</th>
                   <th>Tanggal Purchase</th>
                   <th>Actions</th>
                 </tr>
                 </thead>
                 <tbody>
+                <?php
+                $no = $this->uri->segment('3') + 1; 
+                foreach($list as $rows):
+
+                ?>
+                <tr>
+                <td><?php echo $rows->id;?></td>
+                <td><?php echo $rows->nama_produk;?></td>
+                <td><?php echo $rows->nama_supplier;?></td>
+                <td><?php echo $rows->qty;?></td>
+                <td><?php echo $rows->tanggal_purchase;?></td>
+                <td><a href class="btn btn-primary"><i class="fas fa-search"></i></a></td>
+                </tr>
+                  <?php  endforeach; ?>
                 </tbody>
+
                 <tfoot>
                 <tr>
                 
@@ -58,6 +73,8 @@
                 </tr>
                 </tfoot>
               </table>
+              <?php 
+                  echo $this->pagination->create_links();?>
               </div>
             </div>
             </div>
@@ -67,46 +84,3 @@
         </div>
     </section>
 <?php $this->load->view('layouts/footer');?>
-<script type="text/javascript">
- 
-var save_method; //for save method string
-var table;
- 
-$(document).ready(function() {
- 
-    //datatables
-    table = $('#table').DataTable({ 
- 
-        "processing": true, //Feature control the processing indicator.
-        "serverSide": true, //Feature control DataTables' server-side processing mode.
-        "order": [], //Initial no order.
- 
-        // Load data for the table's content from an Ajax source
-        "ajax": {
-            "url": "<?php echo site_url('purchase/get_list')?>",
-            "type": "POST"
-        },
- 
-        //Set column definition initialisation properties.
-        "columnDefs": [
-        { 
-            "targets": [ -1 ], //last column
-            "orderable": false, //set not orderable
-        },
-        ],
- 
-    });
- 
-    //set input/textarea/select event when change value, remove class error and remove text help block 
-    $("input").change(function(){
-        $(this).parent().parent().removeClass('has-error');
-        $(this).next().empty();
-    });
-    $("select").change(function(){
-        $(this).parent().parent().removeClass('has-error');
-        $(this).next().empty();
-    });
- 
-});
- 
-</script>

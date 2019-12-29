@@ -102,5 +102,10 @@ class Supplier_model extends CI_Model {
         $this->db->delete($this->table);
     }
     
-  
+    public function list()
+    {
+        $this->db->select('*');
+        $query = $this->db->get($this->table);
+        return $query->result();
+    }
 }

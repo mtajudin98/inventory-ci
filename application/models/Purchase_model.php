@@ -4,8 +4,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Purchase_model extends CI_Model {
  
     var $table = 't_purchase';
-    var $column_order = array('id','produk_id','supplier_id','qty','tanggal_purchase',null); //set column field database for datatable orderable
-    var $column_search = array('id','supplier_id','produk_id','qty','tanggal_purchase'); //set column field database for datatable searchable just firstname , lastname , address are searchable
+    var $column_order = array('id','nama_produk','nama_supplier','qty','tanggal_purchase',null); //set column field database for datatable orderable
+    var $column_search = array('id','nama_produk','nama_supplier','qty','tanggal_purchase'); //set column field database for datatable searchable just firstname , lastname , address are searchable
     var $order = array('id' => 'asc'); // default order 
  
     public function __construct()
@@ -13,53 +13,18 @@ class Purchase_model extends CI_Model {
         parent::__construct();
     }
  
-    private function _get_datatables_query()
+    public function get_all($number,$offset)
     {
-         
-        $this->db->from($this->table);
- 
-        $i = 0;
-     
-        foreach ($this->column_search as $item) // loop column 
-        {
-            if($_POST['search']['value']) // if datatable send POST for search
-            {
-                 
-                if($i===0) // first loop
-                {
-                    $this->db->group_start(); // open bracket. query Where with OR clause better with bracket. because maybe can combine with other WHERE with AND.
-                    $this->db->like($item, $_POST['search']['value']);
-                }
-                else
-                {
-                    $this->db->or_like($item, $_POST['search']['value']);
-                }
- 
-                if(count($this->column_search) - 1 == $i) //last loop
-                    $this->db->group_end(); //close bracket
-            }
-            $i++;
-        }
-         
-        if(isset($_POST['order'])) // here order processing
-        {
-            $this->db->order_by($this->column_order[$_POST['order']['0']['column']], $_POST['order']['0']['dir']);
-        } 
-        else if(isset($this->order))
-        {
-            $order = $this->order;
-            $this->db->order_by(key($order), $order[key($order)]);
-        }
-    }
-    function get_all()
-    {
-        $this->_get_datatables_query();
-        if($_POST['length'] != -1)
-        $this->db->limit($_POST['length'], $_POST['start']);
-        $this->db->order_by('id','DESC');
-        $query = $this->db->get();
+       $query= $this->db->query('select p.id, pr.nama_produk, s.nama_supplier, p.qty, p.tanggal_purchase from t_purchase p, t_produk pr, t_supplier s where p.produk_id = pr.id and p.supplier_id = s.id limit '.$number,$offset);
         return $query->result();
+    }   
+    
+    
+ 
+	function jumlah_data(){
+		return $this->db->get($this->table)->num_rows();
     }
+    
     function count_filtered()
     {
         $this->_get_datatables_query();

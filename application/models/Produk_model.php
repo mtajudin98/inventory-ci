@@ -4,8 +4,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Produk_model extends CI_Model {
  
     var $table = 't_produk';
-    var $column_order = array('id','nama_produk','harga_produk','stock',null); //set column field database for datatable orderable
-    var $column_search = array('id','nama_produk','harga_produk','stock'); //set column field database for datatable searchable just firstname , lastname , address are searchable
+    var $column_order = array('id','nama_produk','harga_produk','qty',null); //set column field database for datatable orderable
+    var $column_search = array('id','nama_produk','harga_produk','qty'); //set column field database for datatable searchable just firstname , lastname , address are searchable
     var $order = array('id' => 'asc'); // default order 
  
     public function __construct()
@@ -120,5 +120,11 @@ class Produk_model extends CI_Model {
         $this->db->delete($this->table);
     }
     
+    public function list()
+    {
+        $this->db->select('*');
+        $query = $this->db->get($this->table);
+        return $query->result();
+    }
   
 }
