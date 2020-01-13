@@ -35,8 +35,6 @@
               <table id="table" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-            
-                  <th>Kode Produk</th>
                   <th>Nama Produk</th>
                   <th>Jenis Produk</th>
                   <th>Harga</th>
@@ -47,8 +45,7 @@
                 </tbody>
                 <tfoot>
                 <tr>
-                
-                  <th>Kode Produk</th>
+  
                   <th>Nama Produk</th>
                   <th>Jenis Produk</th>
                   <th>Harga</th>

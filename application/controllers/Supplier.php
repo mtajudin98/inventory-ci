@@ -28,7 +28,6 @@ class Supplier extends CI_Controller {
             $no++;
             $row = array();
    
-            $row[] = $supplier->id;
             $row[] = $supplier->nama_supplier;
             $row[] = $supplier->alamat;
  

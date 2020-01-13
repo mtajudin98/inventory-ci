@@ -7,6 +7,7 @@ class Produk extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('produk_model','produk');
+        $this->load->model('supplier_model','supplier');
         if(!$this->session->userdata('user')){
             redirect('/');
         }
@@ -34,7 +35,6 @@ class Produk extends CI_Controller {
         foreach ($list as $produk) {
             $no++;
             $row = array();
-            $row[] = $produk->id;
             $row[] = $produk->nama_produk;
             $row[] = $produk->jenis_produk;
             $row[] = $produk->harga_produk;
@@ -62,14 +62,13 @@ class Produk extends CI_Controller {
         foreach ($list as $produk) {
             $no++;
             $row = array();
-            $row[] = $produk->id;
             $row[] = $produk->nama_produk;
             $row[] = $produk->harga_produk;
             $row[] = $produk->qty;
  
             //add html for action
             $row[] = '<a class="btn btn-sm btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_produk('."'".$produk->id."'".')"><i class="fas fa-edit"></i></a>
-                  <a class="btn btn-sm btn-danger" href="javascript:void(0)" title="Hapus" onclick="delete_produk('."'".$produk->id."'".')"><i class="fas fa-trash"></i></a>';
+            <a class="btn btn-sm btn-danger" href="javascript:void(0)" title="Hapus" onclick="delete_produk('."'".$produk->id."'".')"><i class="fas fa-trash"></i></a>';
          
             $data[] = $row;
         }
@@ -93,15 +92,13 @@ class Produk extends CI_Controller {
             $no++;
             $row = array();
    
-            $row[] = $produk->id;
             $row[] = $produk->nama_produk;
             $row[] = $produk->harga_produk;
             $row[] = $produk->qty;
  
             //add html for action
             $row[] = '<a class="btn btn-sm btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_produk('."'".$produk->id."'".')"><i class="fas fa-edit"></i></a>
-                  <a class="btn btn-sm btn-danger" href="javascript:void(0)" title="Hapus" onclick="delete_produk('."'".$produk->id."'".')"><i class="fas fa-trash"></i></a>';
-         
+            <a class="btn btn-sm btn-danger" href="javascript:void(0)" title="Hapus" onclick="delete_produk('."'".$produk->id."'".')"><i class="fas fa-trash"></i></a>';
             $data[] = $row;
         }
  
@@ -129,7 +126,7 @@ class Produk extends CI_Controller {
                 'nama_produk' => $this->input->post('nama_produk'),
                 'jenis_produk' => 'makanan',
                 'harga_produk' => $this->input->post('harga_produk'),
-                'qty' => $this->input->post('qty'),
+                'qty' => 0,
                 'user_id' => $this->input->post('user_id'),
             );
         $insert = $this->produk->save($data);
@@ -142,7 +139,6 @@ class Produk extends CI_Controller {
                 'nama_produk' => $this->input->post('nama_produk'),
                 'jenis_produk' => 'minuman',
                 'harga_produk' => $this->input->post('harga_produk'),
-                'qty' => $this->input->post('qty'),
                 'user_id' => $this->input->post('user_id'),
             );
         $insert = $this->produk->save($data);
@@ -155,7 +151,6 @@ class Produk extends CI_Controller {
         $data = array(
             'nama_produk' => $this->input->post('nama_produk'),
             'harga_produk' => $this->input->post('harga_produk'),
-            'qty' => $this->input->post('qty'),
             'user_id' => $this->input->post('user_id'),
             );
         $this->produk->update(array('id' => $this->input->post('id')), $data);
@@ -191,13 +186,7 @@ class Produk extends CI_Controller {
             $data['status'] = FALSE;
         }
  
-        if($this->input->post('qty') == '')
-        {
-            $data['inputerror'][] = 'qty';
-            $data['error_string'][] = 'qty Produk Harus Diisi';
-            $data['status'] = FALSE;
-        }
- 
+         
         if($data['status'] === FALSE)
         {
             echo json_encode($data);

@@ -25,7 +25,7 @@
         <div class="card">
           <div class="card-header">
             <h3 class="card-title">List Makanan</h3>
-            <div class="card-tools"><button class="btn btn-success" onclick="add_produk()"><i class="glyphicon glyphicon-plus"></i> Add produk</button></div>
+            <div class="card-tools"><button class="btn btn-success" onclick="add_produk()"><i class="fas fa-plus"></i> Add produk</button></div>
           </div>
         
           <!-- /.card-header -->
@@ -35,8 +35,6 @@
               <table id="table" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-            
-                  <th>ID Produk</th>
                   <th>Nama Produk</th>
                   <th>Harga</th>
                   <th>QTY</th>
@@ -47,8 +45,7 @@
                 </tbody>
                 <tfoot>
                 <tr>
-                
-                  <th>ID Produk</th>
+
                   <th>Nama Produk</th>
                   <th>Harga</th>
                   <th>QTY</th>

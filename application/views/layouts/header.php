@@ -48,7 +48,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
           <div class="dropdown-divider"></div>
-          <a href="<?php echo base_url(); ?>/user/logout" class="dropdown-item">
+          <a href="<?php echo base_url('user/change');?>" class="dropdown-item">
+            <i class="fas fa-lock mr-2"></i>Change Password
+          </a>
+          <a href="<?php echo base_url('user/logout');?>" class="dropdown-item">
             <i class="fas fa-users mr-2"></i>Logout
           </a>
         </div>
@@ -83,8 +86,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-           <li class="nav-item">
-            <a href="#" class="nav-link">
+           <li class="nav-item  has-treeview <?php if($this->uri->segment(1)=="produk"){echo 'menu-open';}?>">
+            <a href="#" class="nav-link <?php if($this->uri->segment(1)=="produk"){echo 'active';}?>">
               <i class="nav-icon fas fa-box"></i>
               <p>
                Produk
@@ -93,13 +96,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?php echo base_url('produk/list-makanan');?>" class="nav-link">
+                <a href="<?php echo base_url('produk/list_makanan');?>" class="nav-link <?php if($this->uri->segment(2)=="list_makanan"){echo 'active';}?>">
                   <i class="far fa-circle nav-icon"></i>
                   <p>List Makanan</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?php echo base_url('produk/list-minuman');?>" class="nav-link">
+                <a href="<?php echo base_url('produk/list_minuman');?>" class="nav-link <?php if($this->uri->segment(2)=="list_minuman"){echo 'active';}?>">
                   <i class="far fa-circle nav-icon"></i>
                   <p>List Minuman</p>
                 </a>
@@ -107,7 +110,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </ul>
           </li>
           <li class="nav-item">
-            <a href="<?php echo base_url('supplier');?>" class="nav-link">
+            <a href="<?php echo base_url('supplier');?>" class="nav-link <?php if($this->uri->segment(1)=="supplier"){echo 'active';}?>">
               <i class="nav-icon fas fa-address-card"></i>
               <p>
                Suplier
@@ -116,7 +119,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </a>
           </li>
           <li class="nav-item">
-            <a href="<?php echo base_url('purchase');?>" class="nav-link">
+            <a href="<?php echo base_url('purchase');?>" class="nav-link <?php if($this->uri->segment(1)=="purchase"){echo 'active';}?>">
               <i class="nav-icon fas fa-cart-arrow-down"></i>
               <p>
                Purchase

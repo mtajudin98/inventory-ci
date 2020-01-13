@@ -7,6 +7,7 @@ class User extends CI_Controller {
 		parent::__construct();
 		$this->load->helper('url');
 		$this->load->model('user_model');
+		
 	}
 
 	public function index(){
@@ -61,6 +62,42 @@ class User extends CI_Controller {
 	
 		$this->session->unset_userdata('user');
 		redirect('/');
+	}
+
+	public function change()
+	{
+		
+        if(!$this->session->userdata('user')){
+            redirect('/');
+        }
+
+		$this->form_validation->set_rules('new_password','New Password','required|min_length[6]');
+		$this->form_validation->set_rules('confirm_password','Confirm Password','required|matches[new_password]');
+		
+		if($this->form_validation->run()==FALSE)
+		{
+			$this->load->view('admin/change');
+		}
+		else{
+			$current = $this->input->post('current_password');
+			
+			$query = $this->user_model->getuser(array('password'=>md5($current)));
+			if($query == false)
+			{
+				$this->session->set_flashdata('error','Current Password not Match');
+				$this->load->view('admin/change');
+			}
+			else{
+
+				$new = $this->input->post('new_password');
+				$cpass = $this->input->post('confirm_password');
+				$id = $this->session->userdata('id');
+				$this->user_model->edit($new);
+				$this->session->set_flashdata('error','Password Success to change, Please Relogin');
+				$this->session->unset_userdata('user');
+				redirect('/');
+			}
+		}
 	}
 
 }

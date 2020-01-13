@@ -28,7 +28,9 @@
   <div class="card">
     <div class="card-body login-card-body">
       <p class="login-box-msg">Sign in to start your session</p>
-
+      <div class="error">
+          <?php $this->session->flashdata('error');?>
+          </div>
       <form id="logForm">
         <div class="input-group mb-3">
           <input type="text" class="form-control" placeholder="Email" name="username">
@@ -46,15 +48,7 @@
             </div>
           </div>
         </div>
-        <div class="row">
-          <div class="col-8">
-            <div class="icheck-primary">
-              <input type="checkbox" id="remember">
-              <label for="remember">
-                Remember Me
-              </label>
-            </div>
-          </div>
+        
           <!-- /.col -->
           <div class="col-4">
             <button type="submit" class="btn btn-primary btn-block">Sign In</button>

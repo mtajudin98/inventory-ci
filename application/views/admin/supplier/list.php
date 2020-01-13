@@ -35,8 +35,6 @@
               <table id="table" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-            
-                  <th>ID Supplier</th>
                   <th>Nama Supplier</th>
                   <th>Alamat</th>
                   <th>Actions</th>
@@ -46,8 +44,6 @@
                 </tbody>
                 <tfoot>
                 <tr>
-                
-                <th>ID Supplier</th>
                   <th>Nama Supplier</th>
                   <th>Alamat</th>
                   <th>Actions</th>

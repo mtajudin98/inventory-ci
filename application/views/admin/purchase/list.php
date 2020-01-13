@@ -35,10 +35,8 @@
               <table id="table" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-            
-                  <th>ID</th>
-                  <th>Nama Produk</th>
                   <th>Nama Supplier</th>
+                  <th>Nama Produk</th>
                   <th>QTY</th>
                   <th>Tanggal Purchase</th>
                   
@@ -51,22 +49,18 @@
 
                 ?>
                 <tr>
-                <td><?php echo $rows->id;?></td>
-                <td><?php echo $rows->nama_produk;?></td>
                 <td><?php echo $rows->nama_supplier;?></td>
+                <td><?php echo $rows->nama_produk;?></td>
                 <td><?php echo $rows->qty;?></td>
                 <td><?php echo $rows->tanggal_purchase;?></td>
-                <td><a href class="btn btn-primary"><i class="fas fa-search"></i></a></td>
                 </tr>
                   <?php  endforeach; ?>
                 </tbody>
 
                 <tfoot>
                 <tr>
-                
-                <th>ID</th>
-                  <th>Produk ID</th>
-                  <th>Supplier ID</th>
+                  <th>Nama Supplier</th>
+                  <th>Nama Produk</th>
                   <th>QTY</th>
                   <th>Tanggal Purchase</th>
                  
